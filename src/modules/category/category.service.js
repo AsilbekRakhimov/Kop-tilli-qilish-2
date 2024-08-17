@@ -29,19 +29,19 @@ class CategoryService {
     try {
       if (language == "uzbek") {
         const data = await this.#_model
-          .find()
+          .find().populate("products","name.uz cost count")
           .select("name.uz description.uz products");
         return data;
       }
       if (language == "english") {
         const data = await this.#_model
-          .find()
+          .find().populate("products","name.en cost count")
           .select("name.en description.en products");
         return data;
       }
       if (language == "russian") {
         const data = await this.#_model
-          .find()
+          .find().populate("products","name.ru cost count")
           .select(`name.ru description.ru products`);
         return data;
       }
@@ -57,19 +57,19 @@ class CategoryService {
     try {
       if (language == "uzbek") {
         const data = await this.#_model
-          .findById(id)
+          .findById(id).populate("products","name.uz cost count")
           .select("name.uz description.uz products");
         return data;
       }
       if (language == "english") {
         const data = await this.#_model
-          .findById(id)
+          .findById(id).populate("products","name.en cost count")
           .select("name.en description.en products");
         return data;
       }
       if (language == "russian") {
         const data = await this.#_model
-          .findById(id)
+          .findById(id).populate("products","name.ru cost count")
           .select(`name.ru description.ru products`);
         return data;
       }
